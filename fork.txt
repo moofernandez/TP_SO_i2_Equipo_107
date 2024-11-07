@@ -1,1 +1,4 @@
-
+Nombre: Lucas
+Apellido: Carabajal 
+Ip: 192.168.0.95 
+Hora: 9:11 
