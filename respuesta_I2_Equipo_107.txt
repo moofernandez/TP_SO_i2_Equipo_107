@@ -12,3 +12,95 @@ un merge para que ALFA tenga los archivos de GAMMA.
 C: No se puede actualizar de forma convencional, GAMMA puede hacer un remote add de ALFA 
 y de ahi realizar un merge para que tengan los archivos de ALFA en el repositorio de GAMMA.
 D: NO, no se pierden. 
+E: echo “e- BETA (Lucas Carabajal):
+
+# Crear el directorio del repositorio y entrar en él
+mkdir TP_SO_i2_Equipo_107
+cd TP_SO_i2_Equipo_107
+
+# Crear los archivos README.md y fork.txt
+echo "# TP_SO_i2_Equipo_107" > README.md
+touch fork.txt
+
+# Inicializar el repositorio git
+git init
+
+# Añadir los archivos y hacer el primer commit
+git add .
+git commit -m "Creación del repositorio con README y fork.txt"
+
+# Conectar el repositorio a GitHub 
+git remote add origin https://github.com/lcarabajal/TP_SO_i2_Equipo_107
+git push -u origin master
+
+GAMMA SIMULACIÓN
+
+# GAMMA clona el repositorio desde su fork en GitHub
+git clone https://github.com/lcarabajal/TP_SO_i2_Equipo_107
+git checkout -b Robin
+cd  TP_SO_i2_Equipo_107
+
+# Modificar el archivo fork.txt
+echo "Nombre: Gamma Apellido: User" >> fork.txt
+echo "IP: 192.168.1.10" >> fork.txt
+echo "Hora: 9:07" >> fork.txt
+
+# Hacer commit y push
+git add fork.txt
+git commit -m "Modificación de fork.txt por GAMMA"
+# (git push origin master) Solo se puede utilizar si son Colaboradores ...
+git remote remove origin 
+git remote add origin https://github.com/GAMMA/TP_SO_i2_Equipo_107
+git push origin Robin
+//Esto va hacer que al repositorio clonado le salga una notificación de Compare & Pull Request para que luego se pueda ir al repositorio de BETA 
+
+ALFA (Morena Fernandez)
+
+# 3 ALFA clona el repositorio desde su fork en GitHub
+git clone https://github.com/lcarabajal/TP_SO_i2_Equipo_107
+cd  TP_SO_i2_Equipo_107
+git checkout -b Batman
+
+# Modificar el archivo fork.txt
+echo "Nombre: Morena Apellido: Fernandez " >> fork.txt
+echo "IP: 192.168.0.162" >> fork.txt
+echo "Hora: 9:18" >> fork.txt
+
+# Hacer commit y push
+
+git add fork.txt
+git commit -m "Modificación de fork.txt por Batman"
+git remote remove origin 
+git remote add origin https://github.com/moofernandez/TP_SO_i2_Equipo_107
+git push origin Batman
+//Esto va hacer que al repositorio clonado le salga una notificación de Compare & Pull Request para que luego se pueda ir al repositorio de BETA 
+
+#4 BETA Crea un nuevo archivo
+touch NuevoDato.txt
+
+# Hace el commit y push
+git add NuevoDato.txt
+git commit -m "Creación de NuevoDato.txt"
+git push origin master
+
+
+GAMMA Y ALFA 
+#Si BETA acepta el pull request de GAMMA o ALFA, solo faltaria de que GAMMA Y ALFA se sincronicen con el fork
+	
+# Agregar el remoto del repositorio original de BETA junto con los nuevos cambios
+git remote add upstream https://github.com/lcarabajal/TP_SO_i2_Equipo_107
+
+# Obtener y fusionar los cambios
+git fetch upstream
+git merge upstream/master
+
+# Hacer push de los cambios
+git push origin batman o robin (dependiendo de quien se sincronice)
+
+# 6 Beta crea un archivo “respuesta_I2_Equipo_107” y escribe Apellido y nombre de los alumnos que participaron de la interacción
+touch respuesta_I2_Equipo_107.txt
+echo "Nombre: Lucas Apellido: Carabajal " >> respuesta_I2_Equipo_107.txt
+echo "Nombre: Morena Apellido: Fernandez " >> respuesta_I2_Equipo_107.txt
+git add .
+git commit -m “creación y modificación de respuesta_I2_Equipo_107.txt  ”
+git push -u origin master” >> respuesta_I2_Equipo_107.txt
